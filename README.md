@@ -10,4 +10,6 @@ Code file: particiones_n_k.py
 - Stirling numbers.pdf
 - Stirling numbers.pptx
 
+Author: Victor C.
+
 Last Update: 07.2022
