@@ -9,3 +9,5 @@ Code file: particiones_n_k.py
 - https://en.wikipedia.org/wiki/Stirling_number
 - Stirling numbers.pdf
 - Stirling numbers.pptx
+
+Last Update: 07.2022
