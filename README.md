@@ -10,4 +10,8 @@ Code file: particiones_n_k.py
 - Stirling numbers.pdf
 - Stirling numbers.pptx
 
+### Disclaimer:
+- For educational purposes only. Not intended for commercial use.
+- Test data only. Does not contain real data.
+
 Last Update: 07.2022
