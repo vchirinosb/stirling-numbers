@@ -3,26 +3,26 @@
 
 def get_numero_particiones(n, k):
     """
-    Obtener numero de particiones de un conjunto con 'n' elementos en 'k'
-    subconjuntos.
+    Obtain number of partitions of a set with 'n' elements in 'k' subsets.
     
-    Numeros de Stirling
-    S(n, k) = Nro de particiones distintas del conjunto {1, ..., n} en k
-    bloques no vacios
+    Stirling numbers
+    S(n, k) = Number of distinct partitions of the set {1, ..., n} into k
+        non-empty blocks.
 
-    :param n: Int, nro de elementos. Ejemplo: 4.
-    :param k: Int, nro de subconjuntos.  Ejemplo: 2.
+    :param n: Int, number of elements. Example: 4.
+    :param k: Int, number of subsets.  Example: 2.
 
-    :return: Int, nro de diferentes particiones de 'n' elementos en 'k'
-        subconjuntos.
+    :return: Int, number of different partitions of 'n' elements into 'k'
+        subsets.
     """
-    # Inicializamos la matriz de valores.
-    # Ejemplo para n=4, k=2:
+    # We initialize the matrix of values.
+    # Example for n=4, k=2:
     # [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
     matriz = [[0 for i in range(k + 1)] for j in range(n + 1)]
  
     # Calculamos los valores de las entradas de la matriz.
-    # Ejemplo para n=4, k=2:
+    # Values of the matrix entries are caclulated.
+    # Example for n=4, k=2:
     # [[0, 0, 0], [0, 1, 0], [0, 1, 1], [0, 1, 3], [0, 1, 7]]
     for i in range(1, n + 1):
         for j in range(1, k + 1):
@@ -31,23 +31,23 @@ def get_numero_particiones(n, k):
             else:
                 matriz[i][j] = j * matriz[i - 1][j] + matriz[i - 1][j - 1]
     
-    # Ejemplo para n=4, k=2:
+    # Eexample for n=4, k=2:
     # matriz[n][k] = 7          
     return matriz[n][k]
 
 
 def obtener_particiones_n_k(lista_n, k):
     """
-    Obtener particiones de un conjunto con 'n' elementos en 'k' subconjuntos.
+    Obtain partitions of a set with 'n' elements into 'k' subsets.
     
-    Representacion:
+    Representation:
 
     n-1, k        n-1, k-1
           \      /
            \    /
             n, k
 
-    Ejemplo: 123(2)
+    Example: 123(2)
 
     123|-     12|3  13|2      1|23
        \      /        \      /
@@ -60,13 +60,13 @@ def obtener_particiones_n_k(lista_n, k):
                    |
                   -|-
 
-    :param lista_n: List, lista de elementos. Ejemplo: [1, 2, 3, 4].
-    :param k: Int, nro de subconjuntos.  Ejemplo: 2.
+    :param lista_n: Lis, elements list. Example: [1, 2, 3, 4].
+    :param k: Int, number of subsets.  Example: 2.
 
-    :return: particiones de 'n' elementos en 'k' subconjuntos.
+    :return: partitions of 'n' elements into 'k' subsets.
     """
     def agregar_particion_valida(n, a):
-        """Agregar particion valida."""
+        """Add valid partition."""
         particion = [[] for i in range(k)]
         for j in range(n):
             particion[a[j + 1]].append(lista_n[j])
@@ -74,7 +74,7 @@ def obtener_particiones_n_k(lista_n, k):
         return particion
 
     def get_particion_izq(k_prima, n_prima, sigma, n, aux):
-        """Obtener particion de forma recursiva. Rama izquierda."""
+        """Get partition recursively. Left branch."""
         if k_prima == 2:
             yield agregar_particion_valida(n, aux)
         else:
@@ -110,7 +110,7 @@ def obtener_particiones_n_k(lista_n, k):
                         yield v
 
     def get_particion_der(k_prima, n_prima, sigma, n, aux):
-        """Obtener particion de forma recursiva. Rama derecha."""
+        """Get partition recursively. Right branch."""
         if n_prima == k_prima + 1:
             while aux[n_prima] < k_prima - 1:
                 yield agregar_particion_valida(n, aux)
@@ -145,21 +145,21 @@ def obtener_particiones_n_k(lista_n, k):
                     k_prima - 1, n_prima - 1, (k_prima + sigma) % 2, n, aux):
                 yield v
 
-    # Ejemplo de ejecucion
+    # Example of execution
     # n=4, k=2
-    # Inicializamos: a=[0, 0, 0, 0, 0]
+    # Initializing: a=[0, 0, 0, 0, 0]
     n = len(lista_n)
     aux = [0] * (n + 1)
     for j in range(1, k + 1):
         aux[n - k + j] = j - 1
-    # Establecemos: aux=[0, 0, 0, 0, 1]
+    # Establishing: aux=[0, 0, 0, 0, 1]
     return get_particion_izq(k, n, 0, n, aux)
 
 def imprimir_particiones(particiones):
     """
-    Imprimir lista de particiones.
+    Print list of partitions.
     
-    :param particiones: List, lista de listas.
+    :param particiones: List, list of lists.
     """
     for particion in particiones:
         print(*particion)
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     n = int(n)
     k = int(k)
     
-    # Ejemplo para n=4
+    # Example for n=4
     # lista_n = [1,2,3,4]
     lista_n = list(range(1, n+1))
     print('')

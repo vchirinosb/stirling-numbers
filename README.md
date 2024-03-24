@@ -2,7 +2,7 @@
 
 Python implementation for Stirling Numbers.
 
-Code file: particiones_n_k.py
+Code file: partitions_n_k.py
 
 ### Documentation:
 
@@ -14,4 +14,4 @@ Code file: particiones_n_k.py
 - For educational purposes only. Not intended for commercial use.
 - Test data only. Does not contain real data.
 
-Last Update: 07.2022
+Last Update: 03.2024
